@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"> 
+        <p id="p1">1 p inside div</p>
+        <p id="p2">2 p inside div</p>
+        <p>3 p inside div</p>
+    </div>
+    <h1 id="hs">
+        <span>1 span inside h1</span><br>
+        <span>2 span inside h1</span>
+    </h1>
+</body>
+   <script>
+       var d=document.getElementById("demo");
+       var h=document.getElementById("hs");
+       var p1=document.getElementById("p1");
+       var p2=document.getElementById("p2");
+
+       let para=document.createElement("p");
+       var txt=document.createTextNode("New Appended p");
+       
+       let h2=document.createElement("h2");
+       let htxt=document.createTextNode("Heading 2 replace!!!"); 
+       h2.appendChild(htxt);
+
+       para.appendChild(txt);
+       h.appendChild(para);
+
+       d.insertBefore(para,p2);
+       d.replaceChild(h2,p1)
+       
+       d.removeChild(p2);
+       h.remove();  
+   </script>
+</html>

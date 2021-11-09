@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+   <script>
+       const obj={
+          name:"Alax",
+          age:40,
+          city:"Mohali",
+          dob:new Date("05-11-1978"),
+          fullName:function(){
+              return this.fname+" "+this.lname;
+          }
+       };    
+       console.log(obj);
+       console.log(JSON.stringify(obj));
+
+       const obj2=[10,20,30,40];
+       console.log(obj2);
+       console.log(JSON.stringify(obj2));
+   </script>
+</html>

@@ -1,0 +1,3 @@
+{
+    "student":{"fname":"David","lname":"warner","fullName":"function(){console.log(this.fname,this.lname);}"}
+}

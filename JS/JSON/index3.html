@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+  <script>
+      let req=new XMLHttpRequest();
+      
+      req.onload=function(){
+          if(req.readyState==4 && req.status==200){
+             const obj=JSON.parse(req.responseText);  
+               obj.student.fullName=eval("("+obj.student.fullName+")");
+               console.log(obj.student.fullName);
+              obj.student.fullName();
+          }
+      };
+      req.open("GET","file3.json",true);
+      req.send();
+            
+  </script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+  <script>
+      let promise= new Promise(function(myResolve,myReject){
+        let x=1;
+          if(x===0){        
+             myResolve("Code successfull!!!");
+          }else{
+             myReject(new Error("Something Went Wrong!!!"));
+          }
+      });
+      promise.then(
+          function(result){
+              console.log(result);
+          },
+          function(error){
+              console.log(error);
+          }
+      );
+
+    /*
+       If  we are only interested in errors we can pass first arguments as null  
+      promise.then(null,
+          function(error){
+              console.log(error);
+          }
+      );
+    */
+   
+    // Promise.finally() is same as .then(f,f) but it does't take any arguments | It will always run wheather
+    // resolve or reject
+    
+    promise.finally(function(){console.log("Finally Called!!!");});
+   
+    // Promise.catch() is same as .then(null,function(){......});
+
+
+   promise.catch(console.log);
+
+
+  </script>
+</html>

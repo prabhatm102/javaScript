@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    const person={
+       fullname:function(age,nat="IN"){
+            console.log(this.fname+" "+this.lname+" Age:"+age+" nationality:"+nat);
+       }
+    };
+
+    const per1={
+        fname:"David",
+        lname:"Warner",
+        age:37
+    };
+
+    const per2={
+        fname:"Alax",
+        lname:"Carry",
+        age:32
+    };
+    
+    console.log("Using call()----->");
+    person.fullname.call(per1,per1.age,"Aus");
+    person.fullname.call(per2,per2.age,"Aus")
+
+    console.log("Using apply()----->");
+    person.fullname.apply(per1,[per1.age,"Aus"]);
+    person.fullname.apply(per2,[per2.age,"Aus"]);
+    
+    const arr =[10,46,4,57,787];
+    console.log(Math.max.apply(null,arr));
+    console.log(Math.max.apply(0,arr));
+
+    console.log(Math.min.apply(0,[78,3,5,3,782,589]));
+    
+    
+    // The Difference b/w call() and apply() is that apply() takes arguments as array  
+    // while call() takes arguments separately.
+
+</script>
+
+</html>

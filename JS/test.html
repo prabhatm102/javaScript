@@ -1,0 +1,121 @@
+<html>
+  <head>
+<script>
+  var arr = [100, 20, 5, 78, 85];
+  delete arr[1];
+
+  arr.forEach(value);
+  function value(v) {
+    console.log(v);
+  }
+  delete arr[1];
+
+  const arr2 = [70, 45, 4, 200, 2, 34];
+  document.write(arr2.sort() + "<br>");        // It will only works for string
+  document.write(arr2.reverse() + "<br>");     // It wil only works for string
+
+  document.write(arr2.sort(function (a, b) { return a - b; }) + "<br>");  // for number sort
+  document.write(arr2.reverse(function (a, b) { return a - b; }) + "<br>");  // for number sort
+
+  const obj = /t?/.exec("the best");
+  console.log(obj);
+
+
+const obj1={
+    name:"Alax",
+    age:20,    
+    address:{
+      p_addr:[]
+    }
+};
+
+// Getters and Setters using Object.definePropery()
+
+const count={
+  counter:0
+};
+
+console.log("Counter Initialization Value:"+count.counter);
+
+Object.defineProperty(count,"reset",{
+   get : function(){
+     this.counter=0;
+    }
+});
+
+Object.defineProperty(count,"inc",{
+   get : function(){
+     this.counter++;
+    }
+});
+Object.defineProperty(count,"dec",{
+   get : function(){
+     this.counter--;
+    }
+});
+Object.defineProperty(count,"add",{
+   set : function(value){
+     this.counter+=value;     
+    }
+});
+Object.defineProperty(count,"sub",{
+   set : function (value){
+     this.counter-=value;
+    }
+});
+
+count.add=5;
+console.log("Counter value after add:"+count.counter);
+count.sub=2;
+console.log("Counter value after sub:"+count.counter);
+count.inc;
+console.log("Counter value after inc:"+count.counter);
+count.dec;
+console.log("Counter value after dec:"+count.counter);
+count.reset;
+console.log("Counter value after reset:"+count.counter);
+
+
+//____________________________________________________________________________________________________________________
+
+// Object Constructor
+
+function Person(fname,lname,age){
+  this.fname=fname;
+  this.lname=lname;
+  this.age=age;
+  this.language="english";   // object properties can have default values
+  this.changeName=function(name){
+    this.name=name;
+  }
+}
+
+const dav=new Person('David','Warner',34);
+const ala=new Person("Alax" ,"Carry" ,30);
+ala.nationality="Aus";
+
+dav.show=function(){
+  console.log(this.fname+" "+this.lname+" and his age is "+this.age);
+}
+
+// Person.language="Hindi";
+
+// cannot add new property/method to constructor function directly 
+// to add  new property/method firstyly we need to add property to constructor function at the time of creation
+
+
+// by using js prototype property we can add new properties/methods to object constructor from anywhere.
+
+Person.prototype.city="Melbourne";
+Person.prototype.details=function(){
+  console.log("Full Name:"+this.fname+" "+this.lname+" , "+"Age:"+this.age+" , "+"City:"+this.city);
+}
+
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

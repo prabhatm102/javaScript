@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function test(){
+        document.write("Hello<br>");
+    }
+    setTimeout(test,2000);
+
+    // or
+    setTimeout(function mytest(){test();},3000);
+</script>
+</html>
+
+
+Synchronous and Asynchronous in JavaScript
+
+Synchronous JavaScript: As the name suggests synchronous means to be in a sequence, i.e. 
+every statement of the code gets executed one by one. So, basically a statement has to wait for 
+the earlier statement to get executed.
+Let us understand this with the help of an example.
+
+Example:
+
+
+<script>
+    document.write("Hi"); // First
+    document.write("<br>");
+  
+    document.write("Mayukh") ;// Second
+    document.write("<br>");
+      
+    document.write("How are you"); // Third
+</script>
+Output:
+
+
+In the above code snippet, the first line of the code Hi will be logged first then the second line
+Mayukh will be logged and then after its completion, the third line would be logged How are you.
+So as we can see the codes work in a sequence. Every line of code waits for its previous one to get
+executed first and then it gets executed.
+
+
+
+
+Asynchronous JavaScript: Asynchronous code allows the program to be executed immediately where the 
+synchronous code will block further execution of the remaining code until it finishes the current one. 
+This may not look like a big problem but when you see it in a bigger picture you realize that it may
+lead to delaying the User Interface.
+
+Let us see the example how Asynchronous JavaScript runs.
+
+<script>
+    document.write("Hi");
+    document.write("<br>");
+  
+    setTimeout(() => {
+        document.write("Let us see what happens");
+    }, 2000);
+  
+    document.write("<br>");
+    document.write("End");
+    document.write("<br>");
+</script>
+Output:
+
+
+So, what the code does is first it logs in Hi then rather than executing the setTimeout function 
+it logs in End and then it runs the setTimeout function.
+
+At first, as usual, the Hi statement got logged in. As we use browsers to run JavaScript, 
+there are the web APIs that handle these things for users. So, what JavaScript does is, it passes 
+the setTimeout function in such web API and then we keep on running our code as usual. 
+So it does not block the rest of the code from executing and after all the code its execution, 
+it gets pushed to the call stack and then finally gets executed.
+ This is what happens in asynchronous JavaScript.

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    class Car{
+      constructor(brand){
+          this._carName=brand;
+      }
+      set carName(carName){
+          this._carName=carName;
+      }
+      get carName(){
+          console.log(this._carName);
+      }
+    }
+
+    const c1=new Car("Ford");
+    c1.carName;
+    c1.carName="NISSAN";
+    c1.carName;
+</script>
+</html>

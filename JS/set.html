@@ -1,0 +1,32 @@
+<script>
+  const s1=new Set([1,"a","2"]);
+  s1.add('a');  // no duplicate value will add
+  s1.add('b');
+  s1.add('c');
+  
+  console.log(typeof s1);   //object
+  console.log(s1 instanceof Set);
+  
+  console.log(s1.size);
+  console.log(s1.values());
+  console.log(s1.keys());      // values
+  console.log(s1.entries());    //value=>value pair
+  // Although set have no keys or key-value pair it returns value and value-value pair . it makes sets compatible with maps.
+  
+  s1.forEach((value)=>{
+    console.log(value);
+  });
+  
+  s1.delete("a");
+  console.log(s1.values());
+
+  console.log(s1.has("a"));
+  console.log(s1.has(1));
+ 
+  s1.clear();
+  console.log(s1.values());
+  console.log(s1.size);
+
+  
+  
+</script>

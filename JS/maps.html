@@ -1,0 +1,32 @@
+<script>
+    const m1=new Map([[1,'test'],["name","Alax"],["age",34]]); 
+    
+    console.log(typeof m1);
+    console.log(m1 instanceof Map);
+
+    console.log(m1.size);
+
+    m1.set("language","eng");
+    m1.set("city","Melbourne");
+    
+
+    console.log("Age:"+m1.get("age"));
+
+    console.log(m1.entries());
+    console.log(m1.keys());
+    console.log(m1.values());
+    
+    m1.delete(1);
+    console.log(m1.has(1));
+    console.log(m1.has("name"));
+
+    m1.forEach((value,key)=>{
+       console.log(key+" "+value);
+    });
+
+ 
+
+    m1.clear();
+    console.log(m1.size);
+
+</script>

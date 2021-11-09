@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"> 
+        <p id="p1">1 p inside div</p>
+        <p id="p2">2 p inside div</p>
+        <p>3 p inside div</p>
+    </div>
+    <h1 id="hs">
+        <span>1 span inside h1</span>
+        <span>2 span inside h1</span>
+    </h1>
+</body>
+   <script>
+      var d=document.getElementById("demo");
+      var p1=document.getElementById("p1");
+      var p2=document.getElementById("p2");
+      
+      console.log(d.childNodes);
+      console.log(d.firstChild);     
+      console.log(d.lastChild);
+      console.log(d.lastChild.nodeName)
+      
+
+      console.log(p1.parentNode);
+      console.log(p1.parentNode.nodeType);
+
+      console.log(d.nextSibling.nextSibling);
+      console.log(p2.previousSibling)
+   </script>
+</html>
