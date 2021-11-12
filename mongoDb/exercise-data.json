@@ -1,0 +1,61 @@
+[{
+  "_id": {
+    "$oid": "618cbe4bfacdb9de242fe9e4"
+  },
+  "name": "Angular Course",
+  "author": "xyz",
+  "tags": [
+    "angular",
+    "frontend"
+  ],
+  "isPublished": true,
+  "date": {
+    "$date": "2021-11-11T06:55:07.357Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "618cbe727b47df6a2cebe7a7"
+  },
+  "name": "Node JS Course",
+  "author": "xyz",
+  "tags": [
+    "node",
+    "backend"
+  ],
+  "isPublished": true,
+  "date": {
+    "$date": "2021-11-11T06:55:46.805Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "618cc0e198c76aa6f80845e5"
+  },
+  "name": "Python Course",
+  "author": "pqr",
+  "tags": [
+    "python",
+    "backend"
+  ],
+  "isPublished": true,
+  "date": {
+    "$date": "2021-11-11T07:06:09.368Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "618cc0ee3da5ed17e6956ea3"
+  },
+  "name": "Django Course",
+  "author": "pqr",
+  "tags": [
+    "Django",
+    "backend"
+  ],
+  "isPublished": true,
+  "date": {
+    "$date": "2021-11-11T07:06:22.533Z"
+  },
+  "__v": 0
+}]

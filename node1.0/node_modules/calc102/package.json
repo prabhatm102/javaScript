@@ -1,0 +1,19 @@
+{
+  "name": "calc102",
+  "version": "3.0.3",
+  "description": "calc102 is use for calculation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "calc102",
+    "calculator",
+    "sum",
+    "sub",
+    "mult",
+    "div"
+  ],
+  "author": "",
+  "license": "ISC"
+}
