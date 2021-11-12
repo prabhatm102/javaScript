@@ -10,7 +10,8 @@ mongoose.connect("mongodb://localhost/mongo-exercise")
 
 const empSchema = mongoose.Schema({
     empId:Number,
-    name:{type:String,unique:true,required:true},
+    name:{type:String,required:true},
+    email:{type:String,unique:true,required:true},
     salary:Number,
 });
 const Employees = mongoose.model("employees",empSchema);
@@ -45,6 +46,7 @@ router.post("/",(req,res)=>{
       const employee = new Employees({
          empId:emp[0].empId+1,
          name:req.body.name,
+         email:req.body.email,
          salary:parseInt(req.body.salary)
       });
      
@@ -53,7 +55,7 @@ router.post("/",(req,res)=>{
       const result = await employee.save();
       res.send(result);
       }catch(err){
-        console.log(err.message);
+        res.send((err.message));
       }
       
    })();            
@@ -88,7 +90,8 @@ router.delete("/:empId",(req,res)=>{
 function validateEmp(emp){
     const schema = Joi.object({
         name:Joi.string().required().min(3),
-        salary:Joi.number().required().min(8000)
+        salary:Joi.number().required().min(8000),
+        email:Joi.string().required()
       });
       return schema.validate(emp);
 }
