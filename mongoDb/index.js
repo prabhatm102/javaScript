@@ -9,7 +9,10 @@ mongoose.connect("mongodb://127.0.0.1/playground")
 // Creating Schema.........
 
 const courseSchema = new mongoose.Schema({
-    name:String,
+    name:{
+      type:String,
+      required:true
+    },
     author:String,
     tags:[String],
     isPublished : Boolean,
@@ -30,20 +33,23 @@ const course = new Course({
 */
 // Saving a Document...................
 
-const Course = mongoose.model("course",courseSchema);
-async function createCourse(){
-
-    const course = new Course({
-       name:"Django Course",
-       author:"pqr",
-       tags:["Django","backend"],
-       isPublished : true
-    });
-    
-    const result = await course.save();
-    console.log(result);   
+const Course = mongoose.model("course", courseSchema);
+async function createCourse() {
+  const course = new Course({
+   // name:"CSS Course",
+    author: "cde",
+    tags: ["css","css3","frontend"],
+    isPublished: true,
+  });
+  try {
+     await course.validate()
+    // const result = await course.save();
+   // console.log(result);
+  } catch (ex) {
+    console.log(ex.message);
+  }
 }
-  //createCourse();
+createCourse();
 
  //Getting/Querying Documents
 
