@@ -54,7 +54,7 @@ dbDebugger("Connecting to the Database........");
 
 console.log(`Application Name:${config.get("name")}`);
 console.log(`Mail Server:${config.get("mail.host")}`);
-console.log(`Password:${config.get("mail.password")}`);
+//console.log(`Password:${config.get("mail.password")}`);
 
 // Routing......................
 app.use("/",home);
@@ -62,6 +62,6 @@ app.use("/api/courses",courses);
 
 // Server...............................
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3030;
 
 app.listen(port,()=>{console.log(`Server is listening at ${port}`);});

@@ -38,10 +38,11 @@ router.post("/",async (req,res)=>{
       const result = await employee.save();
       res.send(result);
       }catch(err){
-        console.error(err.errors);
+       let errMsg="";
          for(field in err.errors){
-           res.status(400).send((err.errors[field].message));
+         errMsg+=err.errors[field].message;
          }
+         res.status(400).send(errMsg);
       }          
 });
 

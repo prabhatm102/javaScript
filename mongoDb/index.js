@@ -43,7 +43,7 @@ async function createCourse(){
     const result = await course.save();
     console.log(result);   
 }
- // createCourse();
+  //createCourse();
 
  //Getting/Querying Documents
 
@@ -105,7 +105,7 @@ async function getCourse(){
   console.log(course); 
 } 
 
-//getCourse();
+// getCourse();
 
 
 // // Updating a document--Query First
@@ -158,7 +158,7 @@ async function updateCourse(id){
   },{new:true});               //third arg is optional is not specified it will return before updated object.
      console.log(course);
 }
- updateCourse("618cbe4bfacdb9de242fe9e4");
+ //updateCourse("618cbe4bfacdb9de242fe9e4");
 
 // async function removeCourse(id){
 //   const Course = mongoose.model("course",courseSchema);;
@@ -169,6 +169,5 @@ async function updateCourse(id){
 //   console.log(course);
 // }
 // removeCourse("618cbe727b47df6a2cebe7a7");
-
 
 

@@ -1,14 +1,24 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
-const empSchema = mongoose.Schema({
+const Employees = mongoose.model("employees", mongoose.Schema({
     empId:Number,
-    name:{type:String,required:true},
-    email:{type:String,unique:true,required:true},
-    salary:{type:Number,required:true},
-});
-
-const Employees = mongoose.model("employees",empSchema);
+    name:{
+        type:String,
+        required:true,
+        maxlength:5,
+        /*,minlength:3*/
+     },
+    email:{
+        type:String,
+        unique:true,
+        required:true
+    },
+    salary:{
+        type:Number,
+        required:true
+    },
+}));
 
 function validateEmp(emp){
     const schema = Joi.object({
