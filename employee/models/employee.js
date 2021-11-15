@@ -1,7 +1,7 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
 
-const Employees = mongoose.model("employees", mongoose.Schema({
+const Employees = mongoose.model("employees",new mongoose.Schema({
     empId:Number,
     name:{
         type:String,

@@ -6,17 +6,65 @@ mongoose.connect("mongodb://127.0.0.1/playground")
   .then(()=>console.log("Connected To MongoDb....."))
   .catch((err)=>console.error("Couldnot Connect!!!",err.message));
 
-// Creating Schema.........
+// Creating Schema with validators.........
 
 const courseSchema = new mongoose.Schema({
     name:{
       type:String,
-      required:true
+      minlength:4,
+      maxlength:[10,"Name must be less than 10 letters!!! got: {VALUE}"],
+      required:true,
+     // match:/^at/
+    },
+    category:{
+      type:String,
+      //enum:['web','mobile','network'],
+      enum:{values:['web','mobile','network'],message:"{VALUE} is not Supported"},
+      required:true,
+      lowercase:true,
+      //uppercase:true,
+      trim:true
+
     },
     author:String,
-    tags:[String],
+    tags:{
+      type:Array,                                     //Custom Synchronous Validator 
+        validate:{
+          validator:function(v){
+            return v && v.length;
+          },
+          message:"A course should have atleast one tag!!!"
+        } 
+    },
+    // tags:{
+    //   type:Array,
+    //   validate:{                         //Async validators
+    //     isAsync:true,                     // We can also make a validator async by returning a promise.e.g.:   validate: () => Promise.reject(new Error('Oops!'))
+    //     validator:function(v,callback){    // There are two ways for an promise-based async validator to fail:   validate: { validator: () => Promise.resolve(false),message: 'Email validation failed' }
+    //         setTimeout(()=>{                     // 1) If the promise rejects, Mongoose assumes the validator failed with the given error.
+    //           const result = v && v.length>3;    // 2) If the promise resolves to `false`, Mongoose assumes the validator failed and creates an error with the given `message`.
+    //           // callback(result);
+    //         },2000);
+    //     },
+    //     message:"A course should have one tag!!!"
+    //   }
+    // },
     isPublished : Boolean,
-    date:{type:Date,default:Date.now}
+    date:{
+      type:Date,  
+      default:Date.now,
+    //   min:'2000-01-01',
+    //  max:'2021-01-01'
+    },
+    price:{
+      type:Number,
+      required:function(){return this.isPublished;},
+      min:100,
+      max:15000,
+      set :(value)=>Math.round(value),
+      get :(value) =>Math.round(value)
+    }
+
     
 });
 
@@ -36,20 +84,34 @@ const course = new Course({
 const Course = mongoose.model("course", courseSchema);
 async function createCourse() {
   const course = new Course({
-   // name:"CSS Course",
+    name:"atCSS1234567",
+    category:" MOBILE ",
     author: "cde",
-    tags: ["css","css3","frontend"],
-    isPublished: true,
+    tags: [],
+    date:'2021-01-02',
+    isPublished: false,
+    price:999.20
   });
   try {
      await course.validate()
-    // const result = await course.save();
-   // console.log(result);
+    //  const result = await course.save();
+    //  console.log(result);
   } catch (ex) {
-    console.log(ex.message);
+    for(field in ex.errors){
+      console.log(ex.errors[field].message);
+    }
   }
 }
-createCourse();
+//createCourse();
+  // get round price......
+     async function getPrice(id){
+        const Course = new mongoose.model("course",courseSchema);
+        const roundPrice = await Course
+          .find({"_id":"618cbe727b47df6a2cebe7a7"})
+          .select({price:1,_id:0});
+         console.log(roundPrice);
+     } 
+    getPrice("618cbe727b47df6a2cebe7a7"); 
 
  //Getting/Querying Documents
 
