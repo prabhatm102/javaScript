@@ -49,7 +49,7 @@ async function removeAuthor(courseId,authorId){
         if(!course) return console.log("No course exists of this ID:"+courseId);
       const author = course.authors.id(authorId);
         if(!author) return console.log("No author exists of this ID:"+authorId);
-    
+    // console.log(author);
        author.remove();
        course.save();
        console.log(`Author (${author.name}) deleted!`);
@@ -86,7 +86,7 @@ async function updateAuthor(courseId){
  
  // addAuthor("61923f145b2fb878feabe674",new Author({name:"newAuthor",bio:"jvj",website:"hjj.com"}));  
            
- removeAuthor("61923f145b2fb878feabe674","619258cef381d0249ddb99c8");
+ removeAuthor("61923f145b2fb878feabe674","619258c7738898a0ece70d6c");
 
 
 //listCourse();
