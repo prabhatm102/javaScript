@@ -1,5 +1,6 @@
 const port = process.env.PORT || 5000
 const express = require("express");
+const winston = require("winston");
 const app  = new express();
 
 require("./startup/routes")(app);
@@ -10,5 +11,5 @@ require("./startup/validation");
 
  
 app.listen(port,()=>{
-   console.log(`Server  is listening at ${port}...`);
+   winston.log("info",`Server  is listening at ${port}...`);
 });

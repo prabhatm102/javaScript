@@ -6,7 +6,7 @@ module.exports = function(){
    
 process.on("uncaughtException",(ex)=>{
     // console.log("WE GOT AN UNCAUGHT EXCEPTION!");
-     winston.error(ex.message,err);
+     winston.error(ex.message,ex);
      process.exit(1);
     });
    
@@ -22,7 +22,7 @@ process.on("uncaughtException",(ex)=>{
    
    //winston.exceptions.unhandle(new winston.transports.File({filename:'uncaughtException.log'}));
    
-    winston.add(new winston.transports.File({filename:'logfile.log'}));
+   winston.add(new winston.transports.Console({colorize:true,prettyPrint:true}),new winston.transports.File({filename:'logfile.log'}));
 
    //  throw new Error("Something failed during startup!");
 
