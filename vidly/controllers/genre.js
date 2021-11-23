@@ -12,6 +12,12 @@ const getGenres = async (req,res,next)=>{
    
 }
 
+const getGenresById = async (req,res,next)=>{
+  const genre = await Genres.findById(req.params.id);
+    if(!genre) return res.status(400).send("There is no genre of specified id");
+   res.status(200).send(genre);
+}
+
 const setGenres= async (req,res,next)=>{
   //  try{
       const genre = new Genres({
@@ -57,6 +63,7 @@ const deleteGenres = async (req,res)=>{
 
 module.exports={
      getGenres : getGenres,
+     getGenresById:getGenresById,
      setGenre : setGenres,
      updateGenre : updateGenres,
      deleteGenre : deleteGenres

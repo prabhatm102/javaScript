@@ -1,3 +1,103 @@
+const lib = require("../lib");
+describe("absolute", () => {
+  it("should return a positive number if input is positive", () => {
+    const result = lib.absolute(1);
+    expect(result).toBe(1);
+  });
+
+  it("should return a positive number if input is negative", () => {
+    const result = lib.absolute(-1);
+    expect(result).toBe(1);
+  });
+
+  it("should return 0 if input is 0", () => {
+    const result = lib.absolute(0);
+    expect(result).toBe(0);
+  });
+});
+//Testing String....
+
+describe('greet',()=>{
+   it('should return greeting message.',()=>{
+       const result = lib.greet('xyz');
+      
+      // expect(result).toBe('Welcome xyz!');
+       expect(result).toMatch(/xyz!/);
+       expect(result).toContain('xyz')
+   });
+});
+
+// Testing Array
+describe('getCurrencies',()=>{
+   it('should return supported currencies',()=>{
+      const result = lib.getCurrencies();
+
+      //Too general...
+      expect(result).toBeDefined();
+      expect(result).not.toBeNull();
+
+      // Too specific
+      expect(result[0]).toBe('INR');
+      expect(result[1]).toBe('USD');
+      expect(result[2]).toBe('EURO');
+      expect(result.length).toBe(3);
+
+      // Proper way
+      expect(result).toContain('USD');
+      expect(result).toContain('INR','EURO');
+
+      // Ideal way
+      expect(result).toEqual(expect.arrayContaining(['INR','EURO','USD']));
+   });
+});
+
+// Testing objects
+
+describe('getProduct',()=>{
+   it('should return product with the given ID',()=>{
+     const result = lib.getProducts(1);
+    // expect(result).toBe({id:1,price:10});  //fail because both object's memory location is different
+    expect(result).toEqual({id:1,price:10});     // must give all property as arg.
+    expect(result).toMatchObject({id:1});       // not necessary to give all property as arg.
+    expect(result).toHaveProperty("price",10);  // Arg must follow dataType
+   });
+});
+
+// Testing Exceptions
+
+describe('registerUser',()=>{
+   it('should throw exception if username is falsy.',()=>{
+      const arg = [null,undefined,NaN,'',false,0];
+      arg.forEach(a=>{
+         expect(()=>{lib.registerUser(a)}).toThrow();
+      });
+   });
+   it('should return user object if valid username is passed.',()=>{
+      const result = lib.registerUser('xyz');
+      expect(result).toMatchObject({username:'xyz'});
+      expect(result.id).toBeGreaterThan(0);
+   });
+});
+
+// test("absolute- should return a positive number if input is positive",()=>{
+//    const result = lib.absolute(1);
+//    expect(result).toBe(1);
+// });
+
+// test("absolute- should return a positive number if input is negative",()=>{
+//     const result = lib.absolute(-1);
+//     expect(result).toBe(1);
+//  });
+
+//  test("absolute- should return 0 if input is 0",()=>{
+//     const result = lib.absolute(0);
+//     expect(result).toBe(0);
+//  });
+
+
+
+// __________________________________________________________________________________________
+
 /*
 Matchers-----------------------------------------------
 toBe(value)   ----> toBe uses to test exact equality. If you want to check the value of an object,
@@ -79,35 +179,3 @@ Exceptions:--------------------------------
 
 
 */
-
-const lib = require("../lib");
-describe("absolute", () => {
-  it("should return a positive number if input is positive", () => {
-    const result = lib.absolute(1);
-    expect(result).toBe(1);
-  });
-
-  it("should return a positive number if input is negative", () => {
-    const result = lib.absolute(-1);
-    expect(result).toBe(1);
-  });
-
-  it("should return 0 if input is 0", () => {
-    const result = lib.absolute(0);
-    expect(result).toBe(0);
-  });
-});
-// test("absolute- should return a positive number if input is positive",()=>{
-//    const result = lib.absolute(1);
-//    expect(result).toBe(1);
-// });
-
-// test("absolute- should return a positive number if input is negative",()=>{
-//     const result = lib.absolute(-1);
-//     expect(result).toBe(1);
-//  });
-
-//  test("absolute- should return 0 if input is 0",()=>{
-//     const result = lib.absolute(0);
-//     expect(result).toBe(0);
-//  });

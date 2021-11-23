@@ -7,9 +7,11 @@ require("./startup/routes")(app);
 require("./startup/db")();
 require("./startup/logging")();
 require("./startup/config")();
-require("./startup/validation");
+require("./startup/validation")();
 
  
-app.listen(port,()=>{
+const server = app.listen(port,()=>{
    winston.log("info",`Server  is listening at ${port}...`);
 });
+
+module.exports = server;
