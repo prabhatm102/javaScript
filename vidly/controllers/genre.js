@@ -24,7 +24,7 @@ const setGenres= async (req,res,next)=>{
          name:req.body.name
       });
     await genre.save();
-    res.status(201).json(genre);
+    res.status(200).send(genre);
   //  }catch(ex){
   //     next(ex);
   //  // res.status(409).json(ex.message);

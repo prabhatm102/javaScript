@@ -1,3 +1,4 @@
+const validateObjectId = require("../middleware/validateObjectId");
 const admin = require("../middleware/admin");
 const auth = require("../middleware/auth");
 //const asyncMiddleware = require("../middleware/async");
@@ -8,7 +9,7 @@ const router = express.Router();
 
   router.get("/",getGenres);
 
-  router.get("/:id",getGenresById);
+  router.get("/:id",[validateObjectId,getGenresById]);
 
   router.post("/",[auth,validate,setGenre]);
 
