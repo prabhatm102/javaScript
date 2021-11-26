@@ -1,7 +1,7 @@
 const { Customer } = require("../models/customer");
 
 const getCustomers = async (req,res)=>{
-    res.status(200).send(await Customer.find({}));
+    res.send(await Customer.find({}));
 }
 
 const setCustomer = async (req,res)=>{

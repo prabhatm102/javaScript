@@ -43,10 +43,10 @@ const updateGenres = async (req,res,next)=>{
           },
         });
         if (result.matchedCount === 0)
-          res.status(400).send(`There is no genres of id:${req.params.id}`);
+          res.status(401).send(`There is no genres of id:${req.params.id}`);
         else if (result.matchedCount && result.modifiedCount)
           res.status(200).send(`Genres name updated to ${req.body.name}`);
-        else res.status(200).send(`No Changes Detected in genres name:${req.body.name}`);
+        else res.status(204).send(`No Changes Detected in genres name:${req.body.name}`);
     //  }catch (ex) {
     //    next(ex);
     //  // res.status(400).send(ex.message);

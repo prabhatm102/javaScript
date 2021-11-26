@@ -6,7 +6,7 @@ module.exports = function(){
    
 process.on("uncaughtException",(ex)=>{
     // console.log("WE GOT AN UNCAUGHT EXCEPTION!");
-     winston.error(ex.message,ex);
+     winston.error(ex.message);
      process.exit(1);
     });
    
@@ -16,7 +16,7 @@ process.on("uncaughtException",(ex)=>{
    //    process.exit(-1);
    // });
    
-   process.on("unhandledRejection",(ex)=>{
+   process.on("unhandledRejection",(ex)=>{  
        throw ex;
    });
    

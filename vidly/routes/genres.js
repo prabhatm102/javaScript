@@ -14,7 +14,7 @@ const router = express.Router();
 
   router.post("/",[auth,validate,setGenre]);
 
-  router.put("/:id",[validate,updateGenre]);
+  router.put("/:id",[validateObjectId,validate,updateGenre]);
 
   router.delete("/:id",[auth,admin],deleteGenre);
 
