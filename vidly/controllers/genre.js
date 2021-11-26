@@ -1,4 +1,8 @@
 const { Genres } = require("../models/genre");
+const express = require("express");
+const app  = express();
+const hbs = require("express-hbs");
+
 
 const getGenres = async (req,res,next)=>{
  // try{

@@ -1,3 +1,4 @@
+const { allowCrossDomain } = require("../middleware/allowCrossDomain");
 const validateObjectId = require("../middleware/validateObjectId");
 const admin = require("../middleware/admin");
 const auth = require("../middleware/auth");
@@ -7,7 +8,7 @@ const { getGenres, getGenresById, setGenre, updateGenre, deleteGenre } = require
 const express = require("express");
 const router = express.Router();
 
-  router.get("/",getGenres);
+  router.get("/",[allowCrossDomain,getGenres]);
 
   router.get("/:id",[validateObjectId,getGenresById]);
 

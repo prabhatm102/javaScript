@@ -16,7 +16,7 @@ const exec = function(){
 
 describe("/api/genres",()=>{
     beforeEach(()=>server = require("../../index"));
-    afterEach(()=>server.close());
+    afterEach(async()=>await server.close());
       describe("GET/",()=>{
          it('should return all genres.',async()=>{
            const res = await request(server).get('/api/genres');
@@ -34,7 +34,7 @@ describe("/api/genres",()=>{
       }
     );
     afterEach(async()=>{
-        server.close();          
+        await server.close();          
         await Genres.deleteMany({});
     });
       describe("GET/",()=>{
@@ -65,7 +65,7 @@ describe("/api/genres",()=>{
             const res = await request(server).get('/api/genres/1');
             expect(res.status).toBe(404);
          });
-         it('should return 400 if no genre of specified ID.',async()=>{
+         it('should return 400 if no genre of given ID exixts.',async()=>{
             const res = await request(server).get('/api/genres/'+mongoose.Types.ObjectId());
             expect(res.status).toBe(400);
          });

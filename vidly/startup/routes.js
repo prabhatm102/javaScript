@@ -6,8 +6,10 @@ const movies = require("../routes/movies");
 const rentals = require("../routes/rentals");
 const users = require("../routes/users");
 const auth = require("../routes/auth");
+const returns = require("../routes/returns");
 
 module.exports = function (app) {
+
   app.use(express.json());
   app.use("/api/genres", genres);
   app.use("/api/customers", customers);
@@ -15,8 +17,9 @@ module.exports = function (app) {
   app.use("/api/rentals", rentals);
   app.use("/api/users", users);
   app.use("/api/logins", auth);
-  app.use("/", (req, res) => {
-    res.send("Welcome To HomePage!!!");
+  app.use("/api/returns",returns);
+  app.use("/home", (req, res) => {
+    res.render("index.hbs",{test:"Welcome to Homepage!"});
   });
   app.use(error);
 };

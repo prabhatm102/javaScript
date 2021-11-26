@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script>
+            function fetchAll(){
+               let con = document.getElementById("container");
+               let arr;
+              const p = fetch("http://localhost:5000/api/genres");
+                p.then(async(response)=>{
+                    con.innerHTML=JSON.stringify((await response.json()));
+                })
+                .catch(ex=>console.log("Unauthorised"));
+            }
+        </script>
+    </head>
+      <body onload="fetchAll();">
+         <div id="container"></div>
+        
+      </body>
+</html>

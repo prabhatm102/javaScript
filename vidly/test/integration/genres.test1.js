@@ -6,7 +6,7 @@ let server;
 
 describe("/api/genres",()=>{
     beforeEach(()=>server = require("../../index"));
-    afterEach(()=>server.close());
+    afterEach(async()=>await server.close());
       describe("GET/",()=>{
          it('should return all genres.',async()=>{
            const res = await request(server).get('/api/genres');
@@ -20,7 +20,7 @@ describe("/api/genres",()=>{
 describe("/api/genres",()=>{
     beforeEach(()=>server = require("../../index"));
     afterEach(async()=>{
-        server.close();          
+        await server.close();          
         await Genres.deleteMany({});
     });
       describe("GET/",()=>{
